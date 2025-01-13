@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import sadGif from "./pictures/uwu.gif";
+import whenGif from "./pictures/when.gif";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-function Sad() {
+function When() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const gif = new Image();
-    gif.src = sadGif;
+    gif.src = whenGif;
     console.log("GIF path:", gif.src);
     gif.onload = () => {
       setIsLoaded(true);
@@ -19,18 +20,19 @@ function Sad() {
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col bg-[#f5c4fb] gap-6">
       <p className="text-3xl font-semibold text-[#bb7475] font-cour h-auto w-1/2 text-wrap text-center">
-        Ohhh I really wanted you to be my valentine
+        Are you free on ...
       </p>
+      <p className="text-xl font-semibold text-[#bb7475] font-cour h-auto w-1/2 text-wrap text-center">
+        (select a date)
+      </p>
+      <DatePicker label="Basic date picker" />
       {isLoaded ? (
-        <img src={sadGif} alt="Loading GIF" className="w-96" />
+        <img src={whenGif} alt="Loading GIF" className="w-96" />
       ) : (
         <p>Loading...</p>
       )}
-      <p className="text-4xl font-semibold text-[#bb7475] font-cour h-auto w-1/2 text-wrap text-center">
-        Well bye then :(
-      </p>
     </div>
   );
 }
 
-export default Sad;
+export default When;

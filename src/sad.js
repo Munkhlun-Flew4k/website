@@ -22,7 +22,7 @@ function Sad() {
         Ohhh I really wanted you to be my valentine
       </p>
       {isLoaded ? (
-        <img src={sadGif} alt="Loading GIF" className="w-96" />
+        <img src={sadGif} alt="Loading GIF" className="w-96 rounded-lg" />
       ) : (
         <p>Loading...</p>
       )}

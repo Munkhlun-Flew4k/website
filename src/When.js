@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import whenGif from "./pictures/when.gif";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Button from "@mui/material/Button";
+import { Outlet, Link } from "react-router-dom";
+import axios from "axios";
 
 function When() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const gif = new Image();
-    gif.src = whenGif;
-    console.log("GIF path:", gif.src);
-    gif.onload = () => {
-      setIsLoaded(true);
-    };
-    gif.onerror = () => {
-      console.error("Failed to load GIF");
-    };
-  }, []);
+  const handleClick = async (buttonName) => {
+    try {
+      await axios.post("http://localhost:5000/save-click", { buttonName });
+      alert(`${buttonName} clicked and saved!`);
+    } catch (error) {
+      console.error("Error saving button click", error);
+    }
+  }; 
 
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col bg-[#f5c4fb] gap-6">
@@ -25,12 +22,62 @@ function When() {
       <p className="text-xl font-semibold text-[#bb7475] font-cour h-auto w-1/2 text-wrap text-center">
         (select a date)
       </p>
-      <DatePicker label="Basic date picker" />
-      {isLoaded ? (
-        <img src={whenGif} alt="Loading GIF" className="w-96" />
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div className="flex flex-row gap-10">
+        <Button
+          onClick={() => handleClick("Feb14")}
+          variant="outlined"
+          size="medium"
+          sx={{
+            textTransform: "none",
+            fontFamily: "Courier Prime , sans-serif",
+            bgcolor: "#bb7475",
+            border: 0,
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#f44336",
+            },
+          }}
+        >
+          <Link to="/Food">February 14</Link>
+        </Button>
+        <Button
+          onClick={() => handleClick("Feb15")}
+          variant="outlined"
+          size="medium"
+          sx={{
+            textTransform: "none",
+            fontFamily: "Courier Prime , sans-serif",
+            bgcolor: "#bb7475",
+            border: 0,
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#f44336",
+            },
+          }}
+        >
+          <Link to="/Food">February 15</Link>
+        </Button>
+        <Button
+          onClick={() => handleClick("Feb16")}
+          variant="outlined"
+          size="medium"
+          sx={{
+            textTransform: "none",
+            fontFamily: "Courier Prime , sans-serif",
+            bgcolor: "#bb7475",
+            border: 0,
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#f44336",
+            },
+          }}
+        >
+          <Link to="/Food">February 16</Link>
+        </Button>
+      </div>
+
+      <img src={whenGif} alt="Loading GIF" className="w-96" />
+      <Outlet />
     </div>
   );
 }

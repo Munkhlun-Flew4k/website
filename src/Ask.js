@@ -7,8 +7,7 @@ import axios from "axios";
 function Ask() {
   const handleClick = async (buttonName) => {
     try {
-      await axios.post("http://localhost:5000/save-click", { buttonName });
-      alert(`${buttonName} clicked and saved!`);
+      await axios.post("https://backend-efik.onrender.com", { buttonName });
     } catch (error) {
       console.error("Error saving button click", error);
     }
@@ -20,39 +19,44 @@ function Ask() {
         Will you be my valentine?
       </p>
       <div className="flex gap-10">
-        <Button
-          variant="outlined"
-          size="medium"
-          sx={{
-            textTransform: "none",
-            fontFamily: "Courier Prime , sans-serif",
-            bgcolor: "#bb7475",
-            border: 0,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#f44336",
-            },
-          }}
-          onClick={() => handleClick("Yes")}
-        >
-          <Link to="/Ty">Yes</Link>
-        </Button>
-        <Button
-          variant="outlined"
-          size="medium"
-          sx={{
-            textTransform: "none",
-            fontFamily: "Courier Prime , sans-serif",
-            bgcolor: "#bb7475",
-            border: 0,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#f44336",
-            },
-          }}
-        >
-          <Link to="/Sad">I'm not looking to date right now</Link>
-        </Button>
+        <Link to="/Ty">
+          <Button
+            variant="outlined"
+            size="medium"
+            sx={{
+              textTransform: "none",
+              fontFamily: "Courier Prime , sans-serif",
+              bgcolor: "#bb7475",
+              border: 0,
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#f44336",
+              },
+            }}
+            onClick={() => handleClick("Yes")}
+          >
+            <p>Yes</p>
+          </Button>
+        </Link>
+        <Link to="/Sad">
+          <Button
+            variant="outlined"
+            size="medium"
+            sx={{
+              textTransform: "none",
+              fontFamily: "Courier Prime , sans-serif",
+              bgcolor: "#bb7475",
+              border: 0,
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#f44336",
+              },
+            }}
+            onClick={() => handleClick("No")}
+          >
+            <p>I'm not looking to date right now</p>
+          </Button>
+        </Link>
       </div>
       <img src={askGif} alt="Loading GIF" className="w-96 rounded-lg" />
       <Outlet />

@@ -7,12 +7,11 @@ import axios from "axios";
 function When() {
   const handleClick = async (buttonName) => {
     try {
-      await axios.post("http://localhost:5000/save-click", { buttonName });
-      alert(`${buttonName} clicked and saved!`);
+      await axios.post("https://backend-efik.onrender.com", { buttonName });
     } catch (error) {
       console.error("Error saving button click", error);
     }
-  }; 
+  };
 
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col bg-[#f5c4fb] gap-6">
@@ -23,57 +22,64 @@ function When() {
         (select a date)
       </p>
       <div className="flex flex-row gap-10">
-        <Button
-          onClick={() => handleClick("Feb14")}
-          variant="outlined"
-          size="medium"
-          sx={{
-            textTransform: "none",
-            fontFamily: "Courier Prime , sans-serif",
-            bgcolor: "#bb7475",
-            border: 0,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#f44336",
-            },
-          }}
-        >
-          <Link to="/Food">February 14</Link>
-        </Button>
-        <Button
-          onClick={() => handleClick("Feb15")}
-          variant="outlined"
-          size="medium"
-          sx={{
-            textTransform: "none",
-            fontFamily: "Courier Prime , sans-serif",
-            bgcolor: "#bb7475",
-            border: 0,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#f44336",
-            },
-          }}
-        >
-          <Link to="/Food">February 15</Link>
-        </Button>
-        <Button
-          onClick={() => handleClick("Feb16")}
-          variant="outlined"
-          size="medium"
-          sx={{
-            textTransform: "none",
-            fontFamily: "Courier Prime , sans-serif",
-            bgcolor: "#bb7475",
-            border: 0,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#f44336",
-            },
-          }}
-        >
-          <Link to="/Food">February 16</Link>
-        </Button>
+        <Link to="/Food">
+          <Button
+            onClick={() => handleClick("Feb14")}
+            variant="outlined"
+            size="medium"
+            sx={{
+              textTransform: "none",
+              fontFamily: "Courier Prime , sans-serif",
+              bgcolor: "#bb7475",
+              border: 0,
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#f44336",
+              },
+            }}
+          >
+            <p>February 14</p>
+          </Button>
+        </Link>
+
+        <Link to="/Food">
+          <Button
+            onClick={() => handleClick("Feb15")}
+            variant="outlined"
+            size="medium"
+            sx={{
+              textTransform: "none",
+              fontFamily: "Courier Prime , sans-serif",
+              bgcolor: "#bb7475",
+              border: 0,
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#f44336",
+              },
+            }}
+          >
+            <p>February 15</p>
+          </Button>
+        </Link>
+        <Link to="/Food">
+          <Button
+            onClick={() => handleClick("Feb16")}
+            variant="outlined"
+            size="medium"
+            sx={{
+              textTransform: "none",
+              fontFamily: "Courier Prime , sans-serif",
+              bgcolor: "#bb7475",
+              border: 0,
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#f44336",
+              },
+            }}
+          >
+            <p>February 16</p>
+          </Button>
+        </Link>
       </div>
 
       <img src={whenGif} alt="Loading GIF" className="w-96" />

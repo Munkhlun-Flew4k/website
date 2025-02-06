@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import { Outlet, Link } from "react-router-dom";
 
 function Ty() {
-
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col bg-[#f5c4fb] gap-6">
       <p className="text-5xl font-semibold text-[#bb7475] font-cour">
@@ -14,15 +13,21 @@ function Ty() {
       <p className="text-md font-semibold text-[#bb7475] font-cour">
         Don't go yet!!!
       </p>
-      <Button
-        variant="contained"
-        color="secondary"
-        size="large"
-        className="font-cour"
-        sx={{ fontFamily: "Courier Prime , sans-serif", textTransform: "none" }}
-      >
-        <Link to="/When">Click me UwU</Link>
-      </Button>
+      <Link to="/When">
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          className="font-cour"
+          sx={{
+            fontFamily: "Courier Prime , sans-serif",
+            textTransform: "none",
+          }}
+        >
+          <p>Click me UwU</p>
+        </Button>
+      </Link>
+
       <Outlet />
     </div>
   );

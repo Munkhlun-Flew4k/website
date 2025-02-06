@@ -12,7 +12,9 @@ import axios from "axios";
 function Food() {
   const handleClick = async (buttonName) => {
     try {
-      await axios.post("https://backend-efik.onrender.com", { buttonName });
+      await axios.post("https://backend-efik.onrender.com/save-click", {
+        buttonName,
+      });
     } catch (error) {
       console.error("Error saving button click", error);
     }

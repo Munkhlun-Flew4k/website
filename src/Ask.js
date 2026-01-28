@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import { Outlet, Link } from "react-router-dom";
 import askGif from "./pictures/ask.gif";
 import axios from "axios";
+import { useState } from "react";
 
 function Ask() {
   const handleClick = async (buttonName) => {
@@ -15,10 +16,23 @@ function Ask() {
     }
   };
 
+  const [pos, setPos] = useState({ top: null, left: null });
+  const [active, setActive] = useState(false);
+
+  const moveButton = () => {
+    const top = Math.random() * 80 + 10; // 10% → 90%
+    const left = Math.random() * 80 + 10;
+    setPos({ top: `${top}%`, left: `${left}%` });
+    setActive(true);
+  };
+
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col bg-[#f5c4fb] gap-5">
       <p className="text-4xl font-semibold text-[#bb7475] font-cour">
-        Will you be my valentine?
+        Hey there,
+      </p>
+      <p className="text-4xl font-semibold text-[#bb7475] font-cour">
+        Will you be my Valentine?
       </p>
       <div className="flex gap-10">
         <Link to="/Ty">
@@ -44,6 +58,17 @@ function Ask() {
           <Button
             variant="outlined"
             size="medium"
+            onMouseEnter={moveButton}
+            style={
+              active
+                ? {
+                    position: "absolute",
+                    top: pos.top,
+                    left: pos.left,
+                    transform: "translate(-50%, -50%)",
+                  }
+                : {}
+            }
             sx={{
               textTransform: "none",
               fontFamily: "Courier Prime , sans-serif",
@@ -56,7 +81,7 @@ function Ask() {
             }}
             onClick={() => handleClick("No")}
           >
-            <p>I'm not looking to date right now</p>
+            <p>No</p>
           </Button>
         </Link>
       </div>

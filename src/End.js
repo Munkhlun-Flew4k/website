@@ -9,6 +9,9 @@ function End() {
       </p>
       <img src={end} alt="Loading GIF" className="w-96 rounded-lg" />
       <p className="text-md font-semibold text-[#bb7475] font-cour">
+        Please be ready on February 14. I have everything prepared for us.
+      </p>
+      <p className="text-md font-semibold text-[#bb7475] font-cour">
         Bye Love you
       </p>
     </div>

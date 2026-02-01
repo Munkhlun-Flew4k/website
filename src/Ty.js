@@ -1,5 +1,5 @@
 import React from "react";
-import tyGif from "./pictures/ty.gif";
+import tyGif from "./pictures/tyGif.gif";
 import Button from "@mui/material/Button";
 import { Outlet, Link } from "react-router-dom";
 
